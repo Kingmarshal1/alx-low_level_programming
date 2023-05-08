@@ -13,7 +13,7 @@ int create_file(const char *filename, char *text_content)
 	int fd, w, len = 0;
 
 	if (filename == NULL)
-		return (-1);
+		return (-1);/** the return will be negative 1 */
 
 	if (text_content != NULL)
 	{
@@ -27,7 +27,7 @@ int create_file(const char *filename, char *text_content)
 	if (fd == -1 || w == -1)
 		return (-1);
 
-	close(fd);
+	close(fd);/** close fd */
 
 	return (1);
 }

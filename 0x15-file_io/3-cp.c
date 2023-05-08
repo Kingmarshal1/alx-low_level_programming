@@ -15,12 +15,12 @@ char *create_buffer(char *file)
 {
 	char *buffer;
 
-	buffer = malloc(sizeof(char) * 1024);
+	buffer = malloc(sizeof(char) * 1024);/** Buffer = malloc size of char */
 
 	if (buffer == NULL)
 	{
 		dprintf(STDERR_FILENO,
-			"Error: Can't write to %s\n", file);
+			"Error: Can't write to %s\n", file);/** err cant write*/
 		exit(99);
 	}
 
@@ -40,15 +40,15 @@ void close_file(int fd)
 	if (c == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		exit(100);
+		exit(100);/** STDERR file no */
 	}
 }
 
 /**
- * main - Copies the contents of a file to another file.
+ * main - Copies the contents of a file into another file.
  * @argc: The number of arguments supplied to the program.
  * @argv: An array of pointers to the arguments.
- *
+ * Created by Chukwudike Igwe
  * Return: Zero on success.
  *
  * Description:
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
+		exit(97);/** copy files from files */
 	}
 
 	buffer = create_buffer(argv[2]);
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 
-		w = write(to, buffer, r);
+		w = write(to, buffer, r);/** write to buffer r */
 		if (to == -1 || w == -1)
 		{
 			dprintf(STDERR_FILENO,
@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
 	} while (r > 0);
 
 	free(buffer);
-	close_file(from);
+	close_file(from);/** close files from */
 	close_file(to);
 
 	return (0);
